@@ -36,6 +36,8 @@ type Client struct {
 	accessToken string
 	// Estimates is the service used to create estimates
 	Estimates *EstimateService
+	// Shipments is the service used to interact with shipments
+	Shipments *ShipmentsService
 }
 
 // NewClient creates a new instance of Client with any optional functions applied
@@ -50,6 +52,7 @@ func NewClient(optFns ...func(*Client) error) (*Client, error) {
 		client:  client,
 	}
 	c.Estimates = &EstimateService{client: c}
+	c.Shipments = &ShipmentsService{client: c}
 
 	for _, fn := range optFns {
 		if err := fn(c); err != nil {
