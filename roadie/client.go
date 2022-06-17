@@ -34,6 +34,8 @@ type Client struct {
 	customVersion bool
 	// accessToken is the user's access token to use for authorization
 	accessToken string
+	// Estimates is the service used to create estimates
+	Estimates *EstimateService
 }
 
 // NewClient creates a new instance of Client with any optional functions applied
@@ -47,6 +49,7 @@ func NewClient(optFns ...func(*Client) error) (*Client, error) {
 		version: DefaultRoadieVersion,
 		client:  client,
 	}
+	c.Estimates = &EstimateService{client: c}
 
 	for _, fn := range optFns {
 		if err := fn(c); err != nil {
