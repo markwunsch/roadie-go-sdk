@@ -96,7 +96,7 @@ func WithHTTPClient(client *http.Client) func(*Client) error {
 	}
 }
 
-// WithHost allows the user to use a custom snapchat ads api host
+// WithHost allows the user to use a custom roadie ads api host
 func WithHost(host string) func(*Client) error {
 	return func(c *Client) error {
 		c.host = host
@@ -104,7 +104,7 @@ func WithHost(host string) func(*Client) error {
 	}
 }
 
-// WithVersion allows the user to use a custom snapchat ads api version
+// WithVersion allows the user to use a custom roadie ads api version
 func WithVersion(version string) func(*Client) error {
 	return func(c *Client) error {
 		c.version = version
